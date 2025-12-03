@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   try{
     // Forward to backend server running on localhost:5000
-    const resp = await axios.get('http://localhost:5001/analyze', {params:{url}})
+    const resp = await axios.get('https://website-grader-azya.onrender.com', {params:{url}})
     return res.status(200).json(resp.data)
   }catch(err){
     return res.status(500).json({message: err?.response?.data?.message || err.message})
