@@ -1,7 +1,12 @@
 const express = require('express')
 const analyzer = require('./analyzer')
+const { default: puppeteer } = require('puppeteer')
 const app = express()
 const port = process.env.PORT || 5001
+const browser = await puppeteer.launch({
+  headless: true,
+  args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
 
 app.get('/analyze', async (req, res) => {
   const {url} = req.query
